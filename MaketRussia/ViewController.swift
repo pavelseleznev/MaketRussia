@@ -134,7 +134,7 @@ class ViewController: UIViewController {
         buttonThree.isEnabled = false
         buttonFour.isEnabled = false
         UIView.animate(withDuration: 30.0, delay: 0.0, options: .curveLinear, animations: {
-            self.sunGreenOne.transform = CGAffineTransform(rotationAngle: (CGFloat.random(in: 0 ..< 90) * .pi) / 90.0)
+            self.sunGreenOne.transform = CGAffineTransform(rotationAngle: (CGFloat.random(in: 0 ..< 360) * .pi) / 90.0)
         })
         sender.isUserInteractionEnabled = false
         Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: { _ in
@@ -151,7 +151,7 @@ class ViewController: UIViewController {
         buttonThree.isEnabled = false
         buttonFour.isEnabled = false
         UIView.animate(withDuration: 30.0, delay: 0.0, options: .curveLinear, animations: {
-            self.sunGreenTwo.transform = CGAffineTransform(rotationAngle: (CGFloat.random(in: 0 ..< 90) * .pi) / 90.0)
+            self.sunGreenTwo.transform = CGAffineTransform(rotationAngle: (CGFloat.random(in: 0 ..< 360) * .pi) / 90.0)
         })
         sender.isUserInteractionEnabled = false
         Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: { _ in
@@ -168,7 +168,7 @@ class ViewController: UIViewController {
         buttonTwo.isEnabled = false
         buttonFour.isEnabled = false
         UIView.animate(withDuration: 30.0, delay: 0.0, options: .curveLinear, animations: {
-            self.sunGreenThree.transform = CGAffineTransform(rotationAngle: (CGFloat.random(in: 0 ..< 90) * .pi) / 90.0)
+            self.sunGreenThree.transform = CGAffineTransform(rotationAngle: (CGFloat.random(in: 0 ..< 360) * .pi) / 90.0)
         })
         sender.isUserInteractionEnabled = false
         Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: { _ in
@@ -185,7 +185,7 @@ class ViewController: UIViewController {
         buttonTwo.isEnabled = false
         buttonThree.isEnabled = false
         UIView.animate(withDuration: 30.0, delay: 0.0, options: .curveLinear, animations: {
-            self.sunGreenFour.transform = CGAffineTransform(rotationAngle: (CGFloat.random(in: 0 ..< 90) * .pi) / 90.0)
+            self.sunGreenFour.transform = CGAffineTransform(rotationAngle: (CGFloat.random(in: 0 ..< 360) * .pi) / 90.0)
         })
         sender.isUserInteractionEnabled = false
         Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: { _ in
