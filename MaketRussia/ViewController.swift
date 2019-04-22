@@ -12,173 +12,287 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sunRedPause.isHidden = true
+        sunRedPauseTwo.isHidden = true
+        sunRedPauseThree.isHidden = true
+        sunRedPauseFour.isHidden = true
     }
     
+    @IBOutlet weak var sunGreenOne: UIImageView!
+    @IBOutlet weak var sunRedPause: UIImageView!
     @IBOutlet weak var timerLabelOne: UILabel!
-    @IBOutlet weak var timerLabelTwo: UILabel!
-    @IBOutlet weak var timerLabelThree: UILabel!
-    @IBOutlet weak var timerLabelFour: UILabel!
+    @IBOutlet weak var buttonOne: UIButton!
     
-    @IBOutlet weak var buttonOne: UILabel!
+    @IBOutlet weak var sunGreenTwo: UIImageView!
+    @IBOutlet weak var sunRedPauseTwo: UIImageView!
+    @IBOutlet weak var timerLabelTwo: UILabel!
     @IBOutlet weak var buttonTwo: UIButton!
+    
+    @IBOutlet weak var sunGreenThree: UIImageView!
+    @IBOutlet weak var sunRedPauseThree: UIImageView!
+    @IBOutlet weak var timerLabelThree: UILabel!
     @IBOutlet weak var buttonThree: UIButton!
+    
+    @IBOutlet weak var sunGreenFour: UIImageView!
+    @IBOutlet weak var sunRedPauseFour: UIImageView!
+    @IBOutlet weak var timerLabelFour: UILabel!
     @IBOutlet weak var buttonFour: UIButton!
     
-    var countDownTimer: Timer!
-    var totalTime = 15
+    var seconds = 15
+    var timer = Timer()
     
-    func startTimerOne() {
-        countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeOne), userInfo: nil, repeats: true)
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
     }
     
-    @objc func updateTimeOne() {
-        timerLabelOne.text = "\(timeFormatted(totalTime))"
-        
-        if totalTime != 0 {
-            totalTime -= 1
-        } else {
-            endTimer()
-            callAfter(0.0, text: "Text1") { text in
-                self.timerLabelOne.text = "||"
-                
-                self.buttonOne.backgroundColor = UIColor.red
-            }
-            callAfter(15.0, text: "Text1") { text in
-                self.timerLabelOne.text = ""
-                self.buttonOne.layer.cornerRadius = 65
-                self.buttonOne.backgroundColor = UIColor.green
-            }
-            
+    func runTimerTwo() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(ViewController.updateTimerTwo)), userInfo: nil, repeats: true)
+    }
+    
+    func runTimerThree() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(ViewController.updateTimerThree)), userInfo: nil, repeats: true)
+    }
+    
+    func runTimerFour() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(ViewController.updateTimerFour)), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        seconds -= 1
+        timerLabelOne.text = "\(seconds)"
+        if seconds == 0 {
+            let newImg: UIImage? = UIImage(named: "SunRed")
+            self.sunGreenOne.image = newImg
+            self.timerLabelOne.text = ""
+            sunRedPause.isHidden = false
+        }
+        if seconds == -15 {
+            resetTimer()
+            let newImg: UIImage? = UIImage(named: "SunGreen")
+            self.sunGreenOne.image = newImg
+            self.timerLabelOne.text = ""
+            sunRedPause.isHidden = true
         }
     }
     
-    func startTimerTwo() {
-        countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeTwo), userInfo: nil, repeats: true)
-    }
-    
-    @objc func updateTimeTwo() {
-        timerLabelTwo.text = "\(timeFormatted(totalTime))"
-        
-        if totalTime != 0 {
-            totalTime -= 1
-        } else {
-            endTimer()
-            callAfter(0.0, text: "Text1") { text in
-                self.timerLabelTwo.text = "||"
-                
-                self.buttonTwo.backgroundColor = UIColor.red
-            }
-            callAfter(15.0, text: "Text1") { text in
-                self.timerLabelTwo.text = ""
-                self.buttonTwo.layer.cornerRadius = 65
-                self.buttonTwo.backgroundColor = UIColor.green
-            }
-            
+    @objc func updateTimerTwo() {
+        seconds -= 1
+        timerLabelTwo.text = "\(seconds)"
+        if seconds == 0 {
+            let newImg: UIImage? = UIImage(named: "SunRed")
+            self.sunGreenTwo.image = newImg
+            self.timerLabelTwo.text = ""
+            sunRedPauseTwo.isHidden = false
+        }
+        if seconds == -15 {
+            resetTimer()
+            let newImg: UIImage? = UIImage(named: "SunGreen")
+            self.sunGreenTwo.image = newImg
+            self.timerLabelTwo.text = ""
+            sunRedPauseTwo.isHidden = true
         }
     }
     
-    func startTimerThree() {
-        countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeThree), userInfo: nil, repeats: true)
-    }
-    
-    @objc func updateTimeThree() {
-        timerLabelThree.text = "\(timeFormatted(totalTime))"
-        
-        if totalTime != 0 {
-            totalTime -= 1
-        } else {
-            endTimer()
-            callAfter(0.0, text: "Text1") { text in
-                self.timerLabelThree.text = "||"
-                
-                self.buttonThree.backgroundColor = UIColor.red
-            }
-            callAfter(15.0, text: "Text1") { text in
-                self.timerLabelThree.text = ""
-                self.buttonThree.layer.cornerRadius = 65
-                self.buttonThree.backgroundColor = UIColor.green
-            }
-            
+    @objc func updateTimerThree() {
+        seconds -= 1
+        timerLabelThree.text = "\(seconds)"
+        if seconds == 0 {
+            let newImg: UIImage? = UIImage(named: "SunRed")
+            self.sunGreenThree.image = newImg
+            self.timerLabelThree.text = ""
+            sunRedPauseThree.isHidden = false
+        }
+        if seconds == -15 {
+            resetTimerThree()
+            let newImg: UIImage? = UIImage(named: "SunGreen")
+            self.sunGreenThree.image = newImg
+            self.timerLabelThree.text = ""
+            sunRedPauseThree.isHidden = true
         }
     }
     
-    func startTimerFour() {
-        countDownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeFour), userInfo: nil, repeats: true)
-    }
-    
-    @objc func updateTimeFour() {
-        timerLabelFour.text = "\(timeFormatted(totalTime))"
-        
-        if totalTime != 0 {
-            totalTime -= 1
-        } else {
-            endTimer()
-            callAfter(0.0, text: "Text1") { text in
-                self.timerLabelFour.text = "||"
-                
-                self.buttonFour.backgroundColor = UIColor.red
-            }
-            callAfter(15.0, text: "Text1") { text in
-                self.timerLabelFour.text = ""
-                self.buttonFour.layer.cornerRadius = 65
-                self.buttonFour.backgroundColor = UIColor.green
-            }
-            
+    @objc func updateTimerFour() {
+        seconds -= 1
+        timerLabelFour.text = "\(seconds)"
+        if seconds == 0 {
+            let newImg: UIImage? = UIImage(named: "SunRed")
+            self.sunGreenFour.image = newImg
+            self.timerLabelFour.text = ""
+            sunRedPauseFour.isHidden = false
+        }
+        if seconds == -15 {
+            resetTimerFour()
+            let newImg: UIImage? = UIImage(named: "SunGreen")
+            self.sunGreenFour.image = newImg
+            self.timerLabelFour.text = ""
+            sunRedPauseFour.isHidden = true
         }
     }
     
-    func endTimer() {
-        countDownTimer.invalidate()
-        totalTime = 15
+    @IBAction func rotateImage(_ sender: UIButton) {
+        buttonTwo.isEnabled = false
+        buttonThree.isEnabled = false
+        buttonFour.isEnabled = false
+        UIView.animate(withDuration: 30.0, delay: 0.0, options: .curveLinear, animations: {
+            self.sunGreenOne.transform = CGAffineTransform(rotationAngle: (CGFloat.random(in: 0 ..< 360) * .pi) / 90.0)
+        })
+        sender.isUserInteractionEnabled = false
+        Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: { _ in
+            sender.isUserInteractionEnabled = true
+        })
+        runTimer()
+        let newImg: UIImage? = UIImage(named: "SunGreen")
+        self.sunGreenOne.image = newImg
+        sunRedPause.isHidden = true
     }
     
-    func timeFormatted(_ totalSeconds: Int) -> String {
-        let seconds: Int = totalSeconds % 60
-        //     let hours: Int = totalSeconds / 3600
-        return String(format: "%02d", seconds)
+    @IBAction func rotateImageTwo(_ sender: UIButton) {
+        buttonOne.isEnabled = false
+        buttonThree.isEnabled = false
+        buttonFour.isEnabled = false
+        UIView.animate(withDuration: 30.0, delay: 0.0, options: .curveLinear, animations: {
+            self.sunGreenTwo.transform = CGAffineTransform(rotationAngle: (CGFloat.random(in: 0 ..< 360) * .pi) / 90.0)
+        })
+        sender.isUserInteractionEnabled = false
+        Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: { _ in
+            sender.isUserInteractionEnabled = true
+        })
+        runTimerTwo()
+        let newImg: UIImage? = UIImage(named: "SunGreen")
+        self.sunGreenTwo.image = newImg
+        sunRedPauseTwo.isHidden = true
     }
     
-    func callAfter(_ duration: Double, text: String, _ completion: @escaping (String)->Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-            completion(text)
-        }
+    @IBAction func rotateImageThree(_ sender: UIButton) {
+        buttonOne.isEnabled = false
+        buttonTwo.isEnabled = false
+        buttonFour.isEnabled = false
+        UIView.animate(withDuration: 30.0, delay: 0.0, options: .curveLinear, animations: {
+            self.sunGreenThree.transform = CGAffineTransform(rotationAngle: (CGFloat.random(in: 0 ..< 360) * .pi) / 90.0)
+        })
+        sender.isUserInteractionEnabled = false
+        Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: { _ in
+            sender.isUserInteractionEnabled = true
+        })
+        runTimerThree()
+        let newImg: UIImage? = UIImage(named: "SunGreen")
+        self.sunGreenThree.image = newImg
+        sunRedPauseThree.isHidden = true
     }
     
-    func call(_ completion: @escaping (String)->Void) {
-        completion("SomeText")
+    @IBAction func rotateImageFour(_ sender: UIButton) {
+        buttonOne.isEnabled = false
+        buttonTwo.isEnabled = false
+        buttonThree.isEnabled = false
+        UIView.animate(withDuration: 30.0, delay: 0.0, options: .curveLinear, animations: {
+            self.sunGreenFour.transform = CGAffineTransform(rotationAngle: (CGFloat.random(in: 0 ..< 360) * .pi) / 90.0)
+        })
+        sender.isUserInteractionEnabled = false
+        Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: { _ in
+            sender.isUserInteractionEnabled = true
+        })
+        runTimerFour()
+        let newImg: UIImage? = UIImage(named: "SunGreen")
+        self.sunGreenFour.image = newImg
+        sunRedPauseFour.isHidden = true
     }
     
-    /*
-     let pianoSound = URL(fileURLWithPath: Bundle.main.path(forResource: "btn_click_sound", ofType: "mp3")!)
-     var audioPlayer = AVAudioPlayer()
-     */
-    
-    /*
-     @IBAction func PianoC(sender: AnyObject) {
-     do {
-     audioPlayer = try AVAudioPlayer(contentsOf: pianoSound)
-     audioPlayer.play()
-     } catch {
-     // couldn't load file :(
-     }
-     }
-     */
-    
-    @IBAction func buttonOne(_ sender: UIButton) {
-        startTimerOne()
+    func resetTimer() {
+        timer.invalidate()
+        seconds = 15
+        buttonTwo.isEnabled = true
+        buttonThree.isEnabled = true
+        buttonFour.isEnabled = true
     }
     
-    @IBAction func buttonTwo(_ sender: UIButton) {
-        startTimerTwo()
+    func resetTimerTwo() {
+        timer.invalidate()
+        seconds = 15
+        buttonOne.isEnabled = true
+        buttonThree.isEnabled = true
+        buttonFour.isEnabled = true
     }
     
-    @IBAction func buttonThree(_ sender: UIButton) {
-        startTimerThree()
+    func resetTimerThree() {
+        timer.invalidate()
+        seconds = 15
+        buttonOne.isEnabled = true
+        buttonTwo.isEnabled = true
+        buttonFour.isEnabled = true
     }
     
-    
-    @IBAction func buttonFour(_ sender: UIButton) {
-        startTimerFour()
+    func resetTimerFour() {
+        timer.invalidate()
+        seconds = 15
+        buttonOne.isEnabled = true
+        buttonTwo.isEnabled = true
+        buttonThree.isEnabled = true
     }
 }
 
+// Play sound functionality
+
+/*
+ import AVFoundation
+ 
+ let pianoSound = URL(fileURLWithPath: Bundle.main.path(forResource: "btn_click_sound", ofType: "mp3")!)
+ var audioPlayer = AVAudioPlayer()
+ 
+ @IBAction func PianoC(sender: AnyObject) {
+ do {
+ audioPlayer = try AVAudioPlayer(contentsOf: pianoSound)
+ audioPlayer.play()
+ } catch {
+ // couldn't load file :(
+ }
+ }
+*/
+
+// Play video as a background
+
+/*
+ import AVFoundation
+ 
+ class VideoBackgroundController: UIViewController {
+ var avPlayer: AVPlayer!
+ var avPlayerLayer: AVPlayerLayer!
+ var paused: Bool = false
+ 
+ override func viewDidLoad() {
+ 
+ let theURL = NSBundle.mainBundle().URLForResource("my_video_file", withExtension: "mp4")
+ 
+ avPlayer = AVPlayer(URL: theURL!)
+ avPlayerLayer = AVPlayerLayer(player: avPlayer)
+ avPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+ avPlayer.volume = 0
+ avPlayer.actionAtItemEnd = AVPlayerActionAtItemEnd.None
+ 
+ avPlayerLayer.frame = view.layer.bounds
+ view.backgroundColor = UIColor.clearColor();
+ view.layer.insertSublayer(avPlayerLayer, atIndex: 0)
+ 
+ NSNotificationCenter.defaultCenter().addObserver(self,
+ selector: "playerItemDidReachEnd:",
+ name: AVPlayerItemDidPlayToEndTimeNotification,
+ object: avPlayer.currentItem)
+ }
+ 
+ func playerItemDidReachEnd(notification: NSNotification) {
+ let p: AVPlayerItem = notification.object as! AVPlayerItem
+ p.seekToTime(kCMTimeZero)
+ }
+ 
+ override func viewDidAppear(animated: Bool) {
+ super.viewDidDisappear(animated)
+ avPlayer.play()
+ paused = false
+ }
+ 
+ override func viewDidDisappear(animated: Bool) {
+ super.viewDidDisappear(animated)
+ avPlayer.pause()
+ paused = true
+ }
+ }
+*/
